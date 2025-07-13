@@ -1,89 +1,213 @@
+
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
-
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/11.10.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/11.10.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica Psico Ephrata</title>
+  <link rel="icon" type="image/jpeg" href="favicon.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f3e9f7;
+      color: #333;
+      background-image: url('ramos-left.png'), url('ramos-right.png');
+      background-repeat: no-repeat, no-repeat;
+      background-position: left top, right bottom;
+      background-size: 150px, 150px;
+    }
+    header {
+      background-color: #e8d6f5;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    header img {
+      width: 160px;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      margin: 0 0 0.5rem;
+      font-size: 2.2rem;
+      color: #4b007d;
+    }
+    h2 {
+      color: #5d2482;
+      font-size: 1.5rem;
+      margin-top: 2rem;
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      text-align: justify;
+    }
+    .contact-buttons {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .contact-buttons a {
+      text-decoration: none;
+      background-color: #5d2482;
+      color: white;
+      padding: 0.75rem 1.2rem;
+      border-radius: 12px;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      font-size: 1rem;
+    }
+    .post, .testimonial {
+      position: relative;
+      background-color: #fff;
+      padding: 1rem;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .remove-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      font-weight: bold;
+      display: none;
+    }
+    .admin-panel {
+      margin-top: 2rem;
+      background-color: #ffffffaa;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .admin-panel textarea, .admin-panel input[type="password"] {
+      width: 100%;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      padding: 0.5rem;
+      font-family: inherit;
+    }
+    @media (max-width: 600px) {
+      header img {
+        width: 120px;
       }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.2rem; }
+      .contact-buttons a {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+      }
+      body {
+        background-size: 100px, 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo-ephrata.png" alt="Logo Clínica Psico Ephrata">
+    <h1>Clínica Psico Ephrata</h1>
+    <p>Psicóloga Keila Rowe Gandara – CRP 06/222.630</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Sobre a Clínica</h2>
+      <p>A Clínica Psico Ephrata é um espaço de acolhimento, cuidado e transformação emocional. Idealizada e conduzida pela psicóloga <strong>Keila Rowe Gandara</strong> (CRP 06/222.630), a clínica oferece atendimento psicológico individualizado, com foco no bem-estar, equilíbrio emocional e desenvolvimento pessoal.</p>
+    </section>
+
+    <section>
+      <h2>Postagens</h2>
+      <div id="posts-container"></div>
+    </section>
+
+    <section>
+      <h2>Depoimentos</h2>
+      <div id="testimonials-container"></div>
+    </section>
+
+    <section>
+      <h2>Contato</h2>
+      <div class="contact-buttons">
+        <a href="https://wa.me/5519989928964" target="_blank"><i class="fab fa-whatsapp icon"></i><span>WhatsApp</span></a>
+        <a href="mailto:psico.ephrata@gmail.com"><i class="fas fa-envelope icon"></i><span>E-mail</span></a>
+      </div>
+    </section>
+
+    <div class="admin-panel">
+      <h2>Área Administrativa</h2>
+      <input type="password" id="adminPassword" placeholder="Digite a senha de admin" />
+      <textarea id="postContent" placeholder="Nova postagem"></textarea>
+      <button onclick="addItem('post')">Adicionar Post</button>
+      <textarea id="testimonialContent" placeholder="Novo depoimento"></textarea>
+      <button onclick="addItem('testimonial')">Adicionar Depoimento</button>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+  </main>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+  <footer>&copy; 2025 Clínica Psico Ephrata. Todos os direitos reservados.</footer>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyD8sjYiRBr6qEF8pG-5bfKN3chfHeLU0e0",
+      authDomain: "psico-ephrata.firebaseapp.com",
+      projectId: "psico-ephrata",
+      storageBucket: "psico-ephrata.firebasestorage.app",
+      messagingSenderId: "811286942560",
+      appId: "1:811286942560:web:a32a2e8d88cb644437c405",
+      measurementId: "G-6TRSF0DRKM"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const senhaCorreta = "D@ni0306";
+    let admin = false;
+
+    function renderItem(doc, type) {
+      const container = document.getElementById(type === "post" ? "posts-container" : "testimonials-container");
+      const div = document.createElement("div");
+      div.className = type === "post" ? "post" : "testimonial";
+      div.innerHTML = `<p>${doc.data().conteudo}</p>`;
+      if (admin) {
+        const btn = document.createElement("button");
+        btn.className = "remove-btn";
+        btn.textContent = "×";
+        btn.onclick = () => db.collection(type + "s").doc(doc.id).delete().then(() => div.remove());
+        div.appendChild(btn);
+      }
+      container.appendChild(div);
+    }
+
+    function loadContent() {
+      db.collection("posts").get().then(snap => snap.forEach(doc => renderItem(doc, "post")));
+      db.collection("testimonials").get().then(snap => snap.forEach(doc => renderItem(doc, "testimonial")));
+    }
+
+    function addItem(type) {
+      const senha = document.getElementById("adminPassword").value;
+      if (senha !== senhaCorreta) return alert("Senha incorreta");
+      admin = true;
+      const content = document.getElementById(type === "post" ? "postContent" : "testimonialContent").value;
+      if (!content.trim()) return;
+      db.collection(type + "s").add({ conteudo: content }).then(() => location.reload());
+    }
+
+    window.onload = loadContent;
+  </script>
+</body>
 </html>
